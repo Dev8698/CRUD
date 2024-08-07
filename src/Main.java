@@ -10,24 +10,36 @@ public class Main {
     static String nulll[]={""};
     static int a;
     static modules obj1 = new modules();
+    void choice13(){
+        try {
+            Main.main(nulll);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     void Choice12(){
 
         System.out.println();
-        System.out.println("1. Edit Info\n2. Logout");
+        System.out.println("1. Edit Info\n2. Logout\n3. DELETE ACCOUNT\n4. Exit");
         System.out.print("Enter your choice :- ");
+
         a= sc.nextInt();
         if (a==1){
             obj1.EditInfo();
         }
-        else {
+        else if(a==2) {
             System.out.println("\n\n*********** Logged out successfully ***********");
             try {
                 Main.main(nulll);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+        } else if (a==3) {
+            obj1.DeleteAccount();
         }
-
+        else {
+            System.out.println("\n\n*********** Thanks for using ***********");
+        }
     }
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws Exception {

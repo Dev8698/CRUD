@@ -11,12 +11,37 @@ public class modules {
     static String rmail,rpass,rname,rmobile;
     static int auth;
     static Main obj2  = new Main();
-    boolean checker(String outt){
-        boolean a = false;
-        if (outt.equals("1")){
-            a=true;
+
+    void DeleteAccount(){
+        int a;
+
+        System.out.println();
+        System.out.print("1. return\n2. Conform\n");
+        System.out.print("Enter Choice :- ");
+        a=sc.nextInt();
+        if (a==1){
+            login_window();
+            obj2.Choice12();
         }
-        return a;
+        else {
+            System.out.print("Enter Password :- ");
+            rpass= sc.next();
+            for_pass(rpass);
+            String mQuery="DELETE FROM students WHERE passwordd = '"+rpass+"';";
+            Connection con = null;
+            try {
+                con = DriverManager.getConnection(url, username, password);
+                Statement st =con.createStatement();
+                ResultSet rs = st.executeQuery(mQuery);
+
+                con.close();
+
+            } catch (SQLException e) {
+
+                System.out.println("Deleted Successfully");
+                obj2.choice13();
+            }
+        }
     }
 
     void for_mail(String mail1){
